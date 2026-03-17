@@ -71,7 +71,35 @@ public enum FlexKeyword implements GrammarRuleKey {
   VOID,
   WHILE,
   WITH,
+  // added by stuti
+  asm(true),
+  LONG(true),
+  AUTO(true),
 
+  ENUM(true),
+
+  __NEAR(true),
+  EXTERN(true),
+
+  REGISTER(true),
+  UNION(true),
+  __FAR(true),
+  unsigned(true),
+  CHAR(true),
+  FLOAT(true),
+  SHORT(true),
+  __USER_LOCK__,
+  signed(true),
+  __USER_UNLOCK__(true),
+  GOTO(true),
+  sizeof(true),
+  __STACK_NUMBER__(true),
+  VOLATILE(true),
+  inline(true),
+  TYPEDEF(true),
+  DOUBLE(true),
+  INT(true),
+  STRUCT(true),
   EACH(true),
   GET(true),
   SET(true),
@@ -79,8 +107,10 @@ public enum FlexKeyword implements GrammarRuleKey {
   INCLUDE(true),
   DYNAMIC(true),
   FINAL(true),
-  // "native" strangely appears in both the "keywords" and "syntactic keywords" lists of the language spec
-  // It seems that "native" is accepted as a valid identifier by the compiler and should be considered as a "syntactic keyword"
+  // "native" strangely appears in both the "keywords" and "syntactic keywords"
+  // lists of the language spec
+  // It seems that "native" is accepted as a valid identifier by the compiler and
+  // should be considered as a "syntactic keyword"
   NATIVE(true),
   OVERRIDE(true),
   STATIC(true),
@@ -108,8 +138,8 @@ public enum FlexKeyword implements GrammarRuleKey {
 
   public static List<FlexKeyword> keywords() {
     return Collections.unmodifiableList(Arrays.stream(values())
-      .filter(flexKeyword -> !flexKeyword.syntactic)
-      .collect(Collectors.toList()));
+        .filter(flexKeyword -> !flexKeyword.syntactic)
+        .collect(Collectors.toList()));
   }
 
   public String getValue() {

@@ -74,6 +74,7 @@ public enum FlexPunctuator implements GrammarRuleKey {
   QUERY("?"),
   TILD("~"),
   TRIPLE_DOTS("..."),
+  ARROW("->"),
   SEMICOLON(";");
 
   private final String value;
