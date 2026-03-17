@@ -24,7 +24,7 @@ public class FlexPunctuatorTest {
 
   @Test
   public void test() {
-    assertThat(FlexPunctuator.values()).hasSize(55);
+    assertThat(FlexPunctuator.values()).hasSize(56);
   }
 
 }

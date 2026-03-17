@@ -51,8 +51,8 @@ public class FlexIntegrationTest {
   @BeforeClass
   public static void init() {
     MavenBuild build = Tests.createMavenBuild()
-      .setPom(new File("projects/as3commons/pom.xml"))
-      .setCleanSonarGoals();
+        .setPom(new File("projects/as3commons/pom.xml"))
+        .setCleanSonarGoals();
     orchestrator.executeBuild(build);
   }
 
@@ -60,7 +60,8 @@ public class FlexIntegrationTest {
   public void commonsCollectionsIsAnalyzed() {
     assertThat(getComponent(PROJECT_AS3COMMONS).getName()).isEqualTo("AS3Commons Project");
     if (isAtLeastSq76()) {
-      assertThat(getComponent(packageCommonsLang).getName()).isEqualTo("as3-commons-lang/src/main/actionscript/org/as3commons/lang");
+      assertThat(getComponent(packageCommonsLang).getName())
+          .isEqualTo("as3-commons-lang/src/main/actionscript/org/as3commons/lang");
     } else {
       assertThat(getComponent(MODULE_COMMONS_LANG).getName()).isEqualTo("AS3Commons Lang");
       assertThat(getComponent(packageCommonsLang).getName()).isEqualTo("src/main/actionscript/org/as3commons/lang");
@@ -86,10 +87,10 @@ public class FlexIntegrationTest {
 
     assertThat(getProjectMeasureAsDouble("complexity")).isEqualTo(1018);
 
-
     // SONARPLUGINS-670: Different number of violations reported on different OSs
     // 216 on Linux, 217 on Windows
-    // TODO we should be sure that numbers are stable, whereas this is not the case, because profile may change
+    // TODO we should be sure that numbers are stable, whereas this is not the case,
+    // because profile may change
     // assertThat(getProjectMeasure("violations"), anyOf(is(217), is(216)));
   }
 
@@ -112,15 +113,16 @@ public class FlexIntegrationTest {
 
     assertThat(getModuleMeasureAsDouble("complexity")).isEqualTo(639d);
 
-
-    // TODO we should be sure that numbers are stable, whereas this is not the case, because profile may change
+    // TODO we should be sure that numbers are stable, whereas this is not the case,
+    // because profile may change
     // assertThat(getModuleMeasure("violations")).isEqualTo(114);
   }
 
   @Test
   public void packagesMetrics() {
     if (isAtLeastSq76()) {
-      // SQ 7.6 considers that org/as3commons/lang/builder should be counted inside org/as3commons/lang
+      // SQ 7.6 considers that org/as3commons/lang/builder should be counted inside
+      // org/as3commons/lang
       assertThat(getPackageMeasureAsDouble("ncloc")).isEqualTo(1620d);
       assertThat(getPackageMeasureAsDouble("lines")).isEqualTo(4503d);
       assertThat(getPackageMeasureAsDouble("files")).isEqualTo(19d);
@@ -145,7 +147,8 @@ public class FlexIntegrationTest {
     assertThat(getPackageMeasureAsDouble("duplicated_lines_density")).isZero();
     assertThat(getPackageMeasureAsDouble("duplicated_files")).isZero();
 
-    // TODO we should be sure that numbers are stable, whereas this is not the case, because profile may change
+    // TODO we should be sure that numbers are stable, whereas this is not the case,
+    // because profile may change
     // assertThat(getPackageMeasure("violations")).isEqualTo(93);
   }
 
@@ -167,7 +170,8 @@ public class FlexIntegrationTest {
 
     assertThat(getFileMeasureAsDouble("complexity")).isEqualTo(18d);
 
-    // TODO we should be sure that numbers are stable, whereas this is not the case, because profile may change
+    // TODO we should be sure that numbers are stable, whereas this is not the case,
+    // because profile may change
     // assertThat(getFileMeasure("violations")).isEqualTo(24);
   }
 
